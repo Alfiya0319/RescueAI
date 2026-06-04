@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ══════════════════════════════════════════════════════
+     RescueAI · Camera / Live Detection
+     Theme: Dark / fullscreen camera + overlays
+     ══════════════════════════════════════════════════════ -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- ══ FULL SCREEN CAMERA PREVIEW ═══════════════════ -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ✅ Bounding Box Overlay -->
+    <com.survivordetection.utils.OverlayView
+        android:id="@+id/overlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ══ SCAN BORDER OVERLAY (4 corner brackets) ══════ -->
+
+    <!-- Top-left horizontal -->
+    <View android:layout_width="40dp" android:layout_height="3dp"
+        android:background="#FF4D6D"
+        android:layout_marginStart="60dp" android:layout_marginTop="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Top-left vertical -->
+    <View android:layout_width="3dp" android:layout_height="40dp"
+        android:background="#FF4D6D"
+        android:layout_marginStart="60dp" android:layout_marginTop="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Top-right horizontal -->
+    <View android:layout_width="40dp" android:layout_height="3dp"
+        android:background="#FF4D6D"
+        android:layout_marginEnd="60dp" android:layout_marginTop="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Top-right vertical -->
+    <View android:layout_width="3dp" android:layout_height="40dp"
+        android:background="#FF4D6D"
+        android:layout_marginEnd="60dp" android:layout_marginTop="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Bottom-left horizontal -->
+    <View android:layout_width="40dp" android:layout_height="3dp"
+        android:background="#FF4D6D"
+        android:layout_marginStart="60dp" android:layout_marginBottom="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <!-- Bottom-left vertical -->
+    <View android:layout_width="3dp" android:layout_height="40dp"
+        android:background="#FF4D6D"
+        android:layout_marginStart="60dp" android:layout_marginBottom="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Bottom-right horizontal -->
+    <View android:layout_width="40dp" android:layout_height="3dp"
+        android:background="#FF4D6D"
+        android:layout_marginEnd="60dp" android:layout_marginBottom="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <!-- Bottom-right vertical -->
+    <View android:layout_width="3dp" android:layout_height="40dp"
+        android:background="#FF4D6D"
+        android:layout_marginEnd="60dp" android:layout_marginBottom="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- ══ TOP BAR ═══════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp"
+        android:background="#99000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Back button -->
+        <LinearLayout
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:background="@drawable/info_row_dark"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="12dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_menu_revert"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Live Detection"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- LIVE indicator -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/badge_role_bg"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginEnd="10dp">
+            <View
+                android:id="@+id/vLiveDot"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:background="@drawable/circle_green"
+                android:layout_marginEnd="6dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIVE"
+                android:textColor="#22C55E"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+        </LinearLayout>
+
+        <!-- Flash toggle -->
+        <LinearLayout
+            android:id="@+id/btnFlash"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:background="@drawable/info_row_dark"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:id="@+id/ivFlash"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_menu_compass"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ══ AI STATUS CARD (centre bottom of frame) ═══════ -->
+    <LinearLayout
+        android:id="@+id/aiStatusCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/dark_card_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/vStatusDot"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/circle_green"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/tvDetectionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scanning for survivors..."
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- Confidence % -->
+        <TextView
+            android:id="@+id/tvConfidence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF4D6D"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- ══ BOTTOM CONTROLS BAR ═══════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="32dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:background="#99000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Capture / Snapshot button -->
+        <LinearLayout
+            android:id="@+id/btnCapture"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="32dp">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_menu_camera"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Send Alert button -->
+        <Button
+            android:id="@+id/btnSendAlert"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:text="Send Alert"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/button_logout_bg" />
+
+    </LinearLayout>
+
+    <!-- ══ SURVIVOR DETECTED POPUP ═══════════════════════
+         visibility="gone" by default
+         Show via Java when YOLOv8 detects a survivor
+         ════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/survivorPopup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="110dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/dark_card_bg">
+
+            <!-- Red accent top strip -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#FF4D6D" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="14dp">
+
+                    <!-- Pulsing alert icon -->
+                    <LinearLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:gravity="center"
+                        android:background="@drawable/icon_circle_pink"
+                        android:layout_marginEnd="14dp">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@android:drawable/ic_dialog_alert"
+                            app:tint="#FF4D6D" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SURVIVOR DETECTED"
+                            android:textColor="#FF4D6D"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.12" />
+
+                        <TextView
+                            android:id="@+id/tvSurvivorLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Human detected in frame"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Close popup -->
+                    <TextView
+                        android:id="@+id/btnClosePopup"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="✕"
+                        android:textColor="#64748B"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="true" />
+                </LinearLayout>
+
+                <!-- Confidence + GPS row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Confidence chip -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/info_row_dark"
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        android:layout_marginEnd="8dp">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp"
+                            android:src="@android:drawable/star_on"
+                            app:tint="#FF4D6D" android:layout_marginEnd="6dp" />
+                        <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="CONFIDENCE" android:textColor="#3A4A60"
+                                android:textSize="9sp" android:letterSpacing="0.08" />
+                            <TextView android:id="@+id/tvConfidencePopup"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="94%" android:textColor="#FFFFFF" android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- GPS chip -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/info_row_dark"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp"
+                            android:src="@android:drawable/ic_menu_mylocation"
+                            app:tint="#FF4D6D" android:layout_marginEnd="6dp" />
+                        <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="GPS" android:textColor="#3A4A60"
+                                android:textSize="9sp" android:letterSpacing="0.08" />
+                            <TextView android:id="@+id/tvGpsPopup"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Fetching..." android:textColor="#FFFFFF"
+                                android:textSize="11sp" android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Action buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Send Alert -->
+                    <Button
+                        android:id="@+id/btnSendAlertPopup"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="Send Alert"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_logout_bg"
+                        android:layout_marginEnd="8dp" />
+
+                    <!-- Dismiss -->
+                    <Button
+                        android:id="@+id/btnDismiss"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="Dismiss"
+                        android:textColor="#FF4D6D"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/info_row_dark" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

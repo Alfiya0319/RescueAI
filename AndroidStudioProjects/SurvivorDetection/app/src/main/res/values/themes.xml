@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme using Material3 -->
+    <style name="Theme.RescueAI" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#D32F2F</item>
+        <item name="colorPrimaryDark">#B71C1C</item>
+        <item name="colorAccent">#FF5722</item>
+        <item name="android:windowBackground">#F5F5F5</item>
+        <!-- Disable default button tint so our custom drawable shows -->
+        <item name="materialButtonStyle">@style/Widget.RescueAI.Button</item>
+    </style>
+
+    <style name="Widget.RescueAI.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+    </style>
+</resources>

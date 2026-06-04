@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "153211583770",
+    "project_id": "ai-surviour",
+    "storage_bucket": "ai-surviour.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153211583770:android:3288c21f01fe5d7d22c0a3",
+        "android_client_info": {
+          "package_name": "com.survivordetection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8H-W4_nGJ9kVz789oe97m0DVZbTJyZbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

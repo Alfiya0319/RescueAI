@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ══════════════════════════════════════════════════════
+     RescueAI · About Page
+     Theme: #0F0F0F bg / #FF4D6D accent (matches all pages)
+     Logo: same card + glow rings as splash screen
+     ══════════════════════════════════════════════════════ -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F0F0F"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="40dp">
+
+        <!-- ── Top bar ──────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="36dp">
+
+            <LinearLayout
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:background="@drawable/info_row_dark"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@android:drawable/ic_menu_revert"
+                    app:tint="#FFFFFF" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="About"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Spacer to balance -->
+            <View android:layout_width="38dp" android:layout_height="38dp" />
+        </LinearLayout>
+
+        <!-- ── App Logo  (same as splash screen) ──────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginBottom="36dp">
+
+            <!-- Glow rings + logo card -->
+            <FrameLayout
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginBottom="20dp">
+
+                <!-- Outer glow ring -->
+                <View
+                    android:tag="ring1"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:alpha="0.12"
+                    android:background="@drawable/avatar_ring" />
+
+                <!-- Mid glow ring -->
+                <View
+                    android:tag="ring2"
+                    android:layout_width="112dp"
+                    android:layout_height="112dp"
+                    android:alpha="0.22"
+                    android:layout_gravity="center"
+                    android:background="@drawable/avatar_ring" />
+
+                <!-- Logo card — same as splash -->
+                <androidx.cardview.widget.CardView
+                    android:tag="logoCard"
+                    android:layout_width="92dp"
+                    android:layout_height="92dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="46dp"
+                    app:cardElevation="16dp"
+                    app:cardBackgroundColor="#1A1A1A">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+                        <!-- App logo — same drawable used in splash -->
+                        <ImageView
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:src="@drawable/ic_person_placeholder"
+                            android:scaleType="centerInside"
+                            app:tint="#FF4D6D" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+
+            <!-- App name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RescueAI"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.02"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Tagline -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVING LIVES THROUGH INTELLIGENT VISION"
+                android:textColor="#FF4D6D"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real-time AI-powered survivor detection\nfor emergency rescue operations"
+                android:textColor="#64748B"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Version badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_role_bg"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+                <View
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/circle_green"
+                    android:layout_marginEnd="6dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="v1.0  ·  HACKATHON EDITION"
+                    android:textColor="#FF4D6D"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+            </LinearLayout>
+
+            <!-- Stat pills -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:gravity="center"
+                    android:background="@drawable/info_row_dark"
+                    android:orientation="vertical" android:padding="12dp" android:layout_marginEnd="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="YOLOv8" android:textColor="#FF4D6D"
+                        android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="AI Engine" android:textColor="#64748B" android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:gravity="center"
+                    android:background="@drawable/info_row_dark"
+                    android:orientation="vertical" android:padding="12dp"
+                    android:layout_marginStart="6dp" android:layout_marginEnd="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="~2s" android:textColor="#FF4D6D"
+                        android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Detection" android:textColor="#64748B" android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:gravity="center"
+                    android:background="@drawable/info_row_dark"
+                    android:orientation="vertical" android:padding="12dp" android:layout_marginStart="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="24/7" android:textColor="#FF4D6D"
+                        android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Monitoring" android:textColor="#64748B" android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ HOW IT WORKS ══════════════════════════════ -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="How It Works" android:textColor="#FFFFFF"
+            android:textSize="16sp" android:textStyle="bold"
+            android:layout_marginBottom="14dp" />
+
+        <!-- Step 1 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="top"
+            android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="8dp">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="1" android:textColor="#FFFFFF" android:textSize="15sp"
+                android:textStyle="bold" android:gravity="center"
+                android:background="@drawable/step_circle" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Camera Scanning"
+                    android:textColor="#FFFFFF" android:textSize="14sp"
+                    android:textStyle="bold" android:layout_marginBottom="3dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Field operators scan the area. Frames are captured every 2 seconds and sent to the AI backend."
+                    android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Step 2 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="top"
+            android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="8dp">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="2" android:textColor="#FFFFFF" android:textSize="15sp"
+                android:textStyle="bold" android:gravity="center"
+                android:background="@drawable/step_circle" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="YOLOv8 AI Detection"
+                    android:textColor="#FFFFFF" android:textSize="14sp"
+                    android:textStyle="bold" android:layout_marginBottom="3dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Python backend runs YOLOv8 to identify human shapes with configurable confidence thresholds."
+                    android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Step 3 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="top"
+            android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="28dp">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="3" android:textColor="#FFFFFF" android:textSize="15sp"
+                android:textStyle="bold" android:gravity="center"
+                android:background="@drawable/step_circle" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Instant Alert"
+                    android:textColor="#FFFFFF" android:textSize="14sp"
+                    android:textStyle="bold" android:layout_marginBottom="3dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="GPS + snapshot saved to Firebase. Verified rescuers receive instant push notifications."
+                    android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ SAFETY & SECURITY ═════════════════════════ -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Safety &amp; Security" android:textColor="#FFFFFF"
+            android:textSize="16sp" android:textStyle="bold"
+            android:layout_marginBottom="14dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="8dp" android:orientation="horizontal">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="🔒" android:textSize="16sp" android:gravity="center"
+                android:background="@drawable/icon_circle_pink" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="One Email = One Identity"
+                    android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Firebase Auth ensures verified, unique accounts"
+                    android:textColor="#64748B" android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="8dp" android:orientation="horizontal">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="📡" android:textSize="16sp" android:gravity="center"
+                android:background="@drawable/icon_circle_pink" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Encrypted Location Data"
+                    android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="GPS data secured via Firestore security rules"
+                    android:textColor="#64748B" android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="28dp" android:orientation="horizontal">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="🛡" android:textSize="16sp" android:gravity="center"
+                android:background="@drawable/icon_circle_pink" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="24/7 AI Surveillance"
+                    android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Continuous real-time detection with 30s cooldown"
+                    android:textColor="#64748B" android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ TECH STACK ════════════════════════════════ -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Tech Stack" android:textColor="#FFFFFF"
+            android:textSize="16sp" android:textStyle="bold"
+            android:layout_marginBottom="14dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="8dp">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center"
+                android:background="@drawable/info_row_dark"
+                android:orientation="vertical" android:padding="14dp" android:layout_marginEnd="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📱" android:textSize="22sp" android:gravity="center" android:layout_marginBottom="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Android" android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:textStyle="bold" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Java + CameraX" android:textColor="#64748B"
+                    android:textSize="9sp" android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center"
+                android:background="@drawable/info_row_dark"
+                android:orientation="vertical" android:padding="14dp"
+                android:layout_marginEnd="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🐍" android:textSize="22sp" android:gravity="center" android:layout_marginBottom="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Python" android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:textStyle="bold" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Flask + YOLOv8" android:textColor="#64748B"
+                    android:textSize="9sp" android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center"
+                android:background="@drawable/info_row_dark"
+                android:orientation="vertical" android:padding="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🔥" android:textSize="22sp" android:gravity="center" android:layout_marginBottom="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Firebase" android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:textStyle="bold" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Auth + Firestore" android:textColor="#64748B"
+                    android:textSize="9sp" android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="28dp">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center"
+                android:background="@drawable/info_row_dark"
+                android:orientation="vertical" android:padding="14dp" android:layout_marginEnd="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🗺" android:textSize="22sp" android:gravity="center" android:layout_marginBottom="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Maps" android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:textStyle="bold" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Google Maps API" android:textColor="#64748B"
+                    android:textSize="9sp" android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center"
+                android:background="@drawable/info_row_dark"
+                android:orientation="vertical" android:padding="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📍" android:textSize="22sp" android:gravity="center" android:layout_marginBottom="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Location" android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:textStyle="bold" android:gravity="center" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Google Play Services" android:textColor="#64748B"
+                    android:textSize="9sp" android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Empty spacer for alignment -->
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- ══ BUILT WITH ════════════════════════════════ -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Built With ❤" android:textColor="#FFFFFF"
+            android:textSize="16sp" android:textStyle="bold"
+            android:layout_marginBottom="14dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="8dp" android:orientation="horizontal">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="🏆" android:textSize="16sp" android:gravity="center"
+                android:background="@drawable/icon_circle_pink" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Hackathon Project"
+                    android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Built for emergency rescue innovation"
+                    android:textColor="#64748B" android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:background="@drawable/info_row_dark"
+            android:padding="14dp" android:layout_marginBottom="36dp" android:orientation="horizontal">
+            <TextView android:layout_width="36dp" android:layout_height="36dp"
+                android:text="📧" android:textSize="16sp" android:gravity="center"
+                android:background="@drawable/icon_circle_pink" android:layout_marginEnd="14dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Contact / Support"
+                    android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="support@rescueai.com"
+                    android:textColor="#FF4D6D" android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ GET STARTED BUTTON ════════════════════════ -->
+        <Button
+            android:id="@+id/btnBackToLogin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Get Started"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/button_logout_bg"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RescueAI v1.0  ·  Powered by YOLOv8 + Firebase"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+</ScrollView>
